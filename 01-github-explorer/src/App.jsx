@@ -6,9 +6,6 @@ import './styles/global.scss';
 
 export function App() {
   return (
-    <div>
-      <h1>Github Explorer</h1>
-      <RepositoryList />
-    </div>
+    <RepositoryList />
   );
 }
