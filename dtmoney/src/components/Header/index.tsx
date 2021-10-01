@@ -5,7 +5,7 @@ interface HeaderProps {
   onOpenNewTransactionModal: () => void
 }
 
-export function Header({ onOpenNewTransactionModal: onOpenNewTransactionModal }: HeaderProps) {
+export function Header({ onOpenNewTransactionModal }: HeaderProps) {
 
 
   return (
