@@ -18,7 +18,7 @@
   - Chapter I
     - [x] Github Explorer
   - Chapter II
-    - [ ] DT Money
+    - [x] DT Money
   - Chapter III
     - [ ] ig.news
   - Chapter IV
@@ -27,7 +27,11 @@
   - Chapter V
     - [ ] perfreact
 - Desafios
-  - [ ] Chapter I
+  - [x] Chapter I
+    - [Desafio 1](https://github.com/arilsonsouza/desafio01-trilha-reactjs): Desafio sobre os conceitos.
+    - [Desafio 2](https://github.com/arilsonsouza/desafio02-trilha-reactjs): Desafio de componentização.
+
+
   - [ ] Chapter II
   - [ ] Chapter III
   - [ ] Chapter IV
