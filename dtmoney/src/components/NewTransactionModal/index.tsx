@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 import { Container, TransactionTypeContainer, RadioBox } from './styles';
 
 import closeImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
+import { api } from '../../services/api';
 
 Modal.setAppElement('#root');
 
@@ -14,7 +15,23 @@ interface NewTransactionModalProps {
 }
 
 export function NewTransactionModal({ isOpen: isOpen, onRequestClose: onRequestClose }: NewTransactionModalProps) {
+  const [title, setTitle] = useState('');
+  const [amount, setAmount] = useState(0);
+  const [category, setCategory] = useState('');
   const [type, setType] = useState('deposit');
+
+  function handleCreateNewTransaciton(event: FormEvent) {
+    event.preventDefault();
+
+    const data = {
+      title,
+      amount,
+      category,
+      type
+    };
+
+    api.post('/transactions', data)
+  }
 
   return (
     <Modal
@@ -27,12 +44,21 @@ export function NewTransactionModal({ isOpen: isOpen, onRequestClose: onRequestC
         <img src={closeImg} alt="Fechar modal" />
       </button>
 
-      <Container>
+      <Container onSubmit={handleCreateNewTransaciton}>
         <h2>Cadastrar transação</h2>
 
-        <input placeholder="Título" />
+        <input
+          value={title}
+          onChange={evt => setTitle(evt.target.value)}
+          placeholder="Título"
+        />
 
-        <input type='number' placeholder="Valor" />
+        <input
+          value={amount}
+          onChange={evt => setAmount(Number(evt.target.value))}
+          type='number'
+          placeholder="Valor"
+        />
 
         <TransactionTypeContainer>
           <RadioBox
@@ -56,7 +82,11 @@ export function NewTransactionModal({ isOpen: isOpen, onRequestClose: onRequestC
           </RadioBox>
         </TransactionTypeContainer>
 
-        <input placeholder="Categoria" />
+        <input
+          value={category}
+          onChange={evt => setCategory(evt.target.value)}
+          placeholder="Categoria"
+        />
 
         <button type="submit">
           Cadastrar
