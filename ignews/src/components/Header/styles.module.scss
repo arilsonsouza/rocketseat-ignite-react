@@ -27,7 +27,7 @@
       & + a {
         margin-left: 2rem;
       }
-      
+
       transition: color 0.2s;
       &:hover {
         color: var(--white);
@@ -48,5 +48,9 @@
         background-color: var(--yellow-500);
       }
     }
+  }
+
+  button {
+    margin-left: auto;
   }
 }
