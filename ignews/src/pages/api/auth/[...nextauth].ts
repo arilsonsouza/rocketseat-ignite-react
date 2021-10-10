@@ -1,5 +1,8 @@
+import { query as q } from 'faunadb';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
+
+import { fauna } from '../../../services/fauna';
 
 export default NextAuth({
   providers: [
@@ -9,4 +12,28 @@ export default NextAuth({
       scope: 'read:user'
     }),
   ],
+  // jwt: {
+  //   signingKey: process.env.SIGNINKEY,
+  // },
+  callbacks: {
+    async signIn({ id, email, name, image }) {
+      try {
+        await fauna.query(
+          q.If(
+            q.Not(
+              q.Exists(
+                q.Match(q.Index('user_by_email'), q.Casefold(email))
+              ),
+            ),
+            q.Create(q.Collection('users'), { data: { email } }),
+            q.Get(q.Match(q.Index('user_by_email'), q.Casefold(email)))
+          )
+        )
+        return true;
+      } catch (err) {
+        console.log(err)
+        return false;
+      }
+    },
+  }
 })
