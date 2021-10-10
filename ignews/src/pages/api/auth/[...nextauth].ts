@@ -1,5 +1,5 @@
-import { query as q } from 'faunadb';
 import NextAuth from 'next-auth';
+import { query as q } from 'faunadb';
 import Providers from 'next-auth/providers';
 
 import { fauna } from '../../../services/fauna';
