@@ -3,6 +3,7 @@ import { Box, Flex, Heading, Text, Button, Icon, Table, Thead, Tbody, Tr, Td, Th
 
 import { Header } from '../../components/Header';
 import { Sidebar } from '../../components/Sidebar';
+import { Pagination } from '../../components/Pagination';
 
 export default function Users() {
   return (
@@ -65,6 +66,8 @@ export default function Users() {
               </Tr>
             </Tbody>
           </Table>
+
+          <Pagination />
         </Box>
       </Flex>
     </Box>
