@@ -1,3 +1,4 @@
+import type { NextPage } from 'next';
 import { RiAddLine, RiPencilLine } from 'react-icons/ri';
 import { Box, Flex, Heading, Text, Button, Icon, Table, Thead, Tbody, Tr, Td, Th, Checkbox } from '@chakra-ui/react';
 
@@ -5,7 +6,7 @@ import { Header } from '../../components/Header';
 import { Sidebar } from '../../components/Sidebar';
 import { Pagination } from '../../components/Pagination';
 
-export default function Users() {
+const Users: NextPage = () => {
   return (
     <Box>
       <Header />
@@ -72,4 +73,6 @@ export default function Users() {
       </Flex>
     </Box>
   );
-}
+};
+
+export default Users;
