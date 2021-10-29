@@ -1,12 +1,17 @@
 import type { NextPage } from 'next';
 import { RiAddLine, RiPencilLine } from 'react-icons/ri';
-import { Box, Flex, Heading, Text, Button, Icon, Table, Thead, Tbody, Tr, Td, Th, Checkbox } from '@chakra-ui/react';
+import { Box, Flex, Heading, Text, Button, Icon, Table, Thead, Tbody, Tr, Td, Th, Checkbox, useBreakpointValue } from '@chakra-ui/react';
 
 import { Header } from '../../components/Header';
 import { Sidebar } from '../../components/Sidebar';
 import { Pagination } from '../../components/Pagination';
 
 const Users: NextPage = () => {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true
+  });
+
   return (
     <Box>
       <Header />
@@ -33,26 +38,26 @@ const Users: NextPage = () => {
           <Table colorScheme="whiteAlpha">
             <Thead>
               <Tr>
-                <Th px="6" color="gray.300" w="8">
+                <Th px={["4", "4", "6"]} color="gray.300" w="8">
                   <Checkbox colorScheme="pink" />
                 </Th>
                 <Th>Usuário</Th>
-                <Th>Data de cadastro</Th>
+                {isWideVersion && <Th>Data de cadastro</Th>}
                 <Th width="8" />
               </Tr>
             </Thead>
             <Tbody>
               <Tr>
-                <Td px="6"><Checkbox colorScheme="pink" /></Td>
+                <Td px={["4", "4", "6"]}><Checkbox colorScheme="pink" /></Td>
                 <Td>
                   <Box>
                     <Text fontWeight="bold">Arilson Souza</Text>
                     <Text fontSize="sm" color="gray.300">arilson@email.com</Text>
                   </Box>
                 </Td>
-                <Td>
+                {isWideVersion && <Td>
                   04 de Abril, 2021
-                </Td>
+                </Td>}
                 <Td>
                   <Button
                     as="a"
