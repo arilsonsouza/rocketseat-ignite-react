@@ -20,9 +20,9 @@
   - Chapter II
     - [x] DT Money
   - Chapter III
-    - [ ] ig.news
+    - [x] ig.news
   - Chapter IV
-    - [ ] dashgo
+    - [x] dashgo
     - [ ] nextauth
   - Chapter V
     - [ ] perfreact
@@ -30,10 +30,12 @@
   - [x] Chapter I
     - [Desafio 1](https://github.com/arilsonsouza/desafio01-trilha-reactjs): Desafio sobre os conceitos.
     - [Desafio 2](https://github.com/arilsonsouza/desafio02-trilha-reactjs): Desafio de componentização.
-
-
-  - [ ] Chapter II
-  - [ ] Chapter III
+  - [x] Chapter II
+    - [Desafio 3](https://github.com/arilsonsouza/ignite-reactjs-desafio-3): Desafio: Criando um hook de carrinho de compras.
+    - [Desafio 4](https://github.com/arilsonsouza/ignite-reactjs-desafio-4): Desafio: Refactoring de classes e TypeScript.
+  - [x] Chapter III
+    - [Desafio 5](https://github.com/arilsonsouza/ignite-reactjs-desafio-5): Desafio: Criando uma aplicação do zero.
+    - [Desafio 6](https://github.com/arilsonsouza/ignite-reactjs-desafio-5): Desafio: Adicionado features ao blog.
   - [ ] Chapter IV
 
 Este projeto está sob a licença [MIT](./LICENSE).
