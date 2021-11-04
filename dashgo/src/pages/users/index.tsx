@@ -6,11 +6,11 @@ import { Box, Flex, Heading, Text, Button, Icon, Table, Thead, Tbody, Tr, Td, Th
 import { Header } from '../../components/Header';
 import { Sidebar } from '../../components/Sidebar';
 import { Pagination } from '../../components/Pagination';
+import { api } from '../../services/api';
 
 const Users: NextPage = () => {
-  const { data, isLoading, error } = useQuery('users', async () => {
-    const response = await fetch('http://localhost:3000/api/users')
-    const data = await response.json();
+  const { data, isLoading, isFetching, error } = useQuery('users', async () => {
+    const { data } = await api.get('/users');
 
     const users = data.users.map(user => ({
       id: user.id,
@@ -43,6 +43,8 @@ const Users: NextPage = () => {
           <Flex mb="8" justifyContent="space-between" align="center">
             <Heading size="lg" fontWeight="normal">
               Usuários
+              {!isLoading && isFetching &&
+                <Spinner size="sm" color="gray.500" ml="4" />}
             </Heading>
             <Link href="/users/create" passHref>
               <Button
