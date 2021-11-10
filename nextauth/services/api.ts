@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { setCookie, parseCookies } from 'nookies';
+import { signOut } from '../contexts/AuthContext';
 
 type Request = {
   onSuccess: (token: string) => void
@@ -68,10 +69,11 @@ api.interceptors.response.use((response: AxiosResponse) => response, (error: Axi
         });
       });
     } else {
-
+      if (process.browser) {
+        signOut();
+      }
     }
   }
-
   return Promise.reject(error);
 });
 
