@@ -2,11 +2,11 @@ import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { setCookie, parseCookies } from 'nookies';
 
 type Request = {
-  onSuccess: () => void
+  onSuccess: (token: string) => void
   onFailure: (error: AxiosError) => void
 };
 
-let cookies = parseCookies();
+let cookies = null;
 let isRefreshing = false;
 let failedRequestQueue: Request[] = [];
 
@@ -15,6 +15,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config: AxiosRequestConfig) => {
+  cookies = parseCookies();
   config.headers['Authorization'] = `Bearer ${cookies['nextauth.token']}`;
   return config;
 })
@@ -45,7 +46,7 @@ api.interceptors.response.use((response: AxiosResponse) => response, (error: Axi
             path: '/'
           });
 
-          failedRequestQueue.forEach(request => request.onSuccess());
+          failedRequestQueue.forEach(request => request.onSuccess(token));
           failedRequestQueue = [];
         }).catch(err => {
           failedRequestQueue.forEach(request => request.onFailure(err));
@@ -58,7 +59,7 @@ api.interceptors.response.use((response: AxiosResponse) => response, (error: Axi
 
       return new Promise((resolve, reject) => {
         failedRequestQueue.push({
-          onSuccess: () => {
+          onSuccess: (token) => {
             resolve(api(originalConfig));
           },
           onFailure: (error: AxiosError) => {
@@ -70,6 +71,8 @@ api.interceptors.response.use((response: AxiosResponse) => response, (error: Axi
 
     }
   }
+
+  return Promise.reject(error);
 });
 
 export { api };
