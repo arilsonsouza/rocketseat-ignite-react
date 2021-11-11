@@ -1,7 +1,9 @@
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import { useContext, useEffect } from 'react';
 import { AuhtContext } from '../contexts/AuthContext';
-import { api } from '../services/api';
+import { setupApiclient } from '../services/api';
+import { api } from '../services/apiClient';
+import { withSSRAuth } from '../utils/withSSRAuth';
 
 const Dashboard: NextPage = () => {
   const { user } = useContext(AuhtContext);
@@ -25,5 +27,16 @@ const Dashboard: NextPage = () => {
     </div>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = withSSRAuth(async (ctx) => {
+  const apiClient = setupApiclient(ctx);
+
+  const response = await apiClient.get('/me');
+
+  return {
+    props: {}
+  };
+});
+
 
 export default Dashboard;
