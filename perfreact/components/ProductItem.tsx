@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 type Product = {
   id: number;
   price: number;
@@ -8,10 +10,14 @@ type ProductItemProps = {
   product: Product
 }
 
-export function ProductItem({ product }: ProductItemProps): JSX.Element {
+function ProductItemComponent({ product }: ProductItemProps): JSX.Element {
   return (
     <div>
       {product.title} - <strong>{product.price}</strong>
     </div>
   );
 }
+
+export const ProductItem = memo(ProductItemComponent, (prevProps, nextProps) => {
+  return Object.is(prevProps.product, nextProps.product);
+});
