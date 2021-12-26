@@ -1,21 +1,20 @@
-import { useMemo } from 'react';
 import { ProductItem } from './ProductItem';
 
 type Product = {
   id: number;
   price: number;
   title: string;
+  priceFormated: string;
 }
 
 type SearchResultsProps = {
   results: Product[];
+  totalPrice: number;
   onAddToWishList: (id: number) => void;
 }
 
-export function SearchResults({ results, onAddToWishList }: SearchResultsProps): JSX.Element {
-  const totalPrice = useMemo(() => {
-    return results.reduce((acc, product) => acc + product.price, 0)
-  }, [results]);
+export function SearchResults({ results, totalPrice, onAddToWishList }: SearchResultsProps): JSX.Element {
+
 
   return (
     <div>
