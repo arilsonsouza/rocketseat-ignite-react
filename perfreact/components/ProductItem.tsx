@@ -7,13 +7,17 @@ type Product = {
 }
 
 type ProductItemProps = {
-  product: Product
+  product: Product;
+  onAddToWishList: (id: number) => void;
 }
 
-function ProductItemComponent({ product }: ProductItemProps): JSX.Element {
+function ProductItemComponent({ product, onAddToWishList }: ProductItemProps): JSX.Element {
   return (
     <div>
       {product.title} - <strong>{product.price}</strong>
+      <button onClick={() => onAddToWishList(product.id)}>
+        Add to wish list
+      </button>
     </div>
   );
 }

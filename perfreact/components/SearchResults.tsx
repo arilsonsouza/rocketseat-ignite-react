@@ -8,10 +8,11 @@ type Product = {
 }
 
 type SearchResultsProps = {
-  results: Product[]
+  results: Product[];
+  onAddToWishList: (id: number) => void;
 }
 
-export function SearchResults({ results }: SearchResultsProps): JSX.Element {
+export function SearchResults({ results, onAddToWishList }: SearchResultsProps): JSX.Element {
   const totalPrice = useMemo(() => {
     return results.reduce((acc, product) => acc + product.price, 0)
   }, [results]);
@@ -20,7 +21,10 @@ export function SearchResults({ results }: SearchResultsProps): JSX.Element {
     <div>
       <h2>{totalPrice}</h2>
       {results.map(product => (
-        <ProductItem product={product} key={product.id} />
+        <ProductItem
+          product={product} key={product.id}
+          onAddToWishList={onAddToWishList}
+        />
       ))}
     </div>
   );
