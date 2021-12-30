@@ -6,11 +6,11 @@ import { SignInButton } from '.';
 
 jest.mock('next-auth/client');
 
-const useSessionModked = mocked(useSession);
+const useSessionMocked = mocked(useSession);
 
 describe('SignInButton component', () => {
   it('renders correctly when is not authenticated', () => {
-    useSessionModked.mockReturnValueOnce([null, false]);
+    useSessionMocked.mockReturnValueOnce([null, false]);
 
     render(
       <SignInButton />
@@ -20,7 +20,7 @@ describe('SignInButton component', () => {
   });
 
   it('renders correctly when is authenticated', () => {
-    useSessionModked.mockReturnValueOnce([{
+    useSessionMocked.mockReturnValueOnce([{
       user: { name: 'John Doe', email: 'john.doe@email.com' },
       expires: 'fake-expires'
     }, false]);
