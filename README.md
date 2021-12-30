@@ -23,9 +23,9 @@
     - [x] ig.news
   - Chapter IV
     - [x] dashgo
-    - [ ] nextauth
+    - [x] nextauth
   - Chapter V
-    - [ ] perfreact
+    - [x] perfreact
 - Desafios
   - [x] Chapter I
     - [Desafio 1](https://github.com/arilsonsouza/desafio01-trilha-reactjs): Desafio sobre os conceitos.
@@ -36,6 +36,6 @@
   - [x] Chapter III
     - [Desafio 5](https://github.com/arilsonsouza/ignite-reactjs-desafio-5): Desafio: Criando uma aplicação do zero.
     - [Desafio 6](https://github.com/arilsonsouza/ignite-reactjs-desafio-5): Desafio: Adicionado features ao blog.
-  - [ ] Chapter IV
-
+  - [x] Chapter IV
+    - [Desafio 7](https://github.com/arilsonsouza/ignite-reactjs-desafio-7): Desafio consiste em desenvolver uma aplicação para upload de imagem utilizando React, TypeScript, Chakra UI, ImgBB e FaunaDB.
 Este projeto está sob a licença [MIT](./LICENSE).
